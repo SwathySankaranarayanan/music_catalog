@@ -1,4 +1,4 @@
-# Song track Flask API Project
+# Music Flask API Project
 
 This Flask-based API allows users to interact with a music catalog.Users can retrieve a list of songs, search for tracks by title, and rate their favorite songs. The API ensures efficient data management and easy access for users to interact with the song catalog and submit ratings.
 
