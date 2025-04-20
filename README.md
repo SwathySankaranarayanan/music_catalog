@@ -5,6 +5,7 @@ This Flask-based API allows users to interact with a music catalog.Users can ret
 ## Table of Contents
 - [Installation](#installation)
 - [Endpoints](#endpoints)
+- [Run Test](#run-test)
 ---
 
 ## Installation
@@ -16,8 +17,7 @@ To get started, you need to set up the project environment and install the neces
 Clone the repository to your local machine:
 
 ```
-git clone https://github.com/yourusername/your-repo-name.git
-cd song_track
+git clone https://github.com/SwathySankaranarayanan/music_catalog.git
 ```
 
 ### 2. Set up
@@ -39,12 +39,37 @@ cd instance
 sqlite3 songs.db
 
 ```
-initial sourcing from data set
+---
+## Endpoints
+
+### 1.GET /songs/
+
+Fetch paginated list of songs.
+```
+curl -X GET http://localhost:5000/songs/?page=2&per_page=10
+```
+
+### 2. GET /songs/`<title>`
+Fetch the song if available or else throws NotFound error
+```
+curl -X GET http://localhost:5000/songs/avreg
+```
+### 3. POST /songs/`<title>`
+Adds the rating to the song if it is available , throws NotFound if the song is not available.If the rating is not with in 1 to 5 raises Value error
+```
+curl -X POST http://localhost:5000/songs/3AM -H "Content-Type: application/json" -d '{"rating": 4}'
+```
+### 4.POST /songs/
+Sources the data from data_set.json to the table
+```
+curl -X GET http://localhost:5000/songs/
+```
+---
+
+## Run Test
+To run test case
 
 ```
-curl -X POST http://localhost:5000/songs/
-curl -X POST http://localhost:5000/songs/3AM -H "Content-Type: application/json" -d '{"rating": 6}'
-curl -X GET http://localhost:5000/songs/avreg
-curl -X GET http://localhost:5000/songs/?page=2 
-
+pip install pytest
+python -m pytest test/test_controller.py
 ```
