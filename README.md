@@ -62,7 +62,7 @@ curl -X POST http://localhost:5000/songs/3AM -H "Content-Type: application/json"
 ### 4.POST /songs/
 Sources the data from data_set.json to the table
 ```
-curl -X GET http://localhost:5000/songs/
+curl -X POST http://localhost:5000/songs/
 ```
 ---
 

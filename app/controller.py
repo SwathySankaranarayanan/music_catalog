@@ -43,10 +43,9 @@ class Songs(Resource):
                 row[key_name] = data[key][str(i)]
             rows.append(row)
 
-        # Insert each row into the database
         for row in rows:
             current_app.logger.info("row %s",type(row))
-            song = Song(**row)  # Create a Song object dynamically with the data in each row
+            song = Song(**row)  
             db.session.add(song)
         
         db.session.commit() 
